@@ -29,7 +29,7 @@ public class RegisterUserUseCase
         dbContext.Users.Add(entity);
         dbContext.SaveChanges();
 
-        var tokenGenerator = new JwtTokenGenerator(); //break
+        var tokenGenerator = new JwtTokenGenerator();
 
         return new ResponseRegisteredUserJson
         {

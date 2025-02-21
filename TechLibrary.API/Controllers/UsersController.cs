@@ -6,7 +6,7 @@ using TechLibrary.Exception;
 
 namespace TechLibrary.API.Controllers;
 
-[Route("[controller]")]
+[Route("api/user")]
 [ApiController]
 public class UsersController : ControllerBase
 {
@@ -16,28 +16,11 @@ public class UsersController : ControllerBase
 
     public IActionResult Register(RequestUserJson request)
     {
-        try
-        {
             var useCase = new RegisterUserUseCase();
 
             var response = useCase.Execute(request);
 
             return Created(string.Empty, response);
-        }
-        catch (TechLibraryException ex)
-        {
-            return BadRequest(new ResponseErrorMessagesJson
-            {
-                Errors = ex.GetErrorMessages()
-            });
-        }
-        catch
-        {
-            return StatusCode(StatusCodes.Status500InternalServerError, new ResponseErrorMessagesJson
-            {
-                Errors = { "Erro Desconhecido" }
-            });
-        }
     }
 
 }
