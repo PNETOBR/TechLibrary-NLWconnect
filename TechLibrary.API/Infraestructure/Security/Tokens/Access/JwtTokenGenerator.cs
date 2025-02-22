@@ -9,7 +9,7 @@ namespace TechLibrary.API.Infraestructure.Security.Tokens.Access;
 public class JwtTokenGenerator
 {
     public string Generate(User user)
-    { //break
+    {
         var claims = new List<Claim>()
         {
             new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
@@ -29,7 +29,7 @@ public class JwtTokenGenerator
         return tokenHandler.WriteToken(securityToken); // essa função retorna o token gerado em string
     }
 
-    private static SymmetricSecurityKey SecurityKey()
+    private SymmetricSecurityKey SecurityKey()
     {
         var signinkey = "hBpcLzQcTy9yDKe77r0SuD6tO5Oe0JF9";
 
