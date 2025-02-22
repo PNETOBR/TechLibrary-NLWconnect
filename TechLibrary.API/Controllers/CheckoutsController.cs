@@ -16,7 +16,7 @@ namespace TechLibrary.API.Controllers
         {
             var loggedUser = new LoggedUserService(HttpContext);
 
-            var useCase = new RegisterBookCheckoutUseCase();
+            var useCase = new RegisterBookCheckoutUseCase(loggedUser);
 
             useCase.Execute(bookID);
 
